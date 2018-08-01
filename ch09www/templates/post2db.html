@@ -1,0 +1,20 @@
+<!-- post2db.html -->
+{% extends "base.html" %}
+{% block title %}聯絡管理員{% endblock %}
+{% block content %}
+<div class='container'>
+	{% if message %}
+	<div class="alert alert-warning" role="alert">{{ message }}</div>
+	{% endif %}
+	<form name='my form' action='.' method='POST'>
+		{% csrf_token %}
+		<table>
+			{{ post_form.as_table }}
+		</table>
+		<input type='submit' value='提交'>
+		<input type='reset' value='重填'>
+	</form>
+</div>
+
+
+{% endblock %}

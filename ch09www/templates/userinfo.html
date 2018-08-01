@@ -1,0 +1,29 @@
+<!-- login.html -->
+{% extends "base.html" %}
+{% block title %}分享日記{% endblock %}
+{% block content %}
+<div class='container'>
+{% if message %}
+	<div class="alert alert-warning" role="alert">{{ message }}</div>
+{% endif %}
+	<div class='row'>
+		<div class='col-md-12'>
+			<div class='card'>
+				<div class='card-header' align='center'>
+					<h3>使用者資訊</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/><br/>
+	<div class='card'>
+	<div class='card-header text-white bg-dark' align='center'>{{ userinfo.user.username | upper}} </div>
+	<div class='card-body'>	
+		電子郵件: {{ userinfo.user.email }} <br/>
+		Description: {{ userinfo.description }}
+	</div>
+	</div>
+		
+</div>
+
+{% endblock %}

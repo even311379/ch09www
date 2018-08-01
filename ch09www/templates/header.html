@@ -1,0 +1,37 @@
+<!-- header.html-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" >分享日記</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item {% if HOME %}active{% endif %}">
+        <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
+      </li>
+      {% if username %}
+      <li class="nav-item {% if USINF %}active{% endif %}">
+        <a class="nav-link" href="/userinfo">個人資料</a>
+      </li>
+      <li class="nav-item {% if POST %}active{% endif %}">
+        <a class="nav-link" href="/post">寫日記</a>
+      </li>
+      <li class="nav-item {% if LOGO %}active{% endif %}">
+        <a class="nav-link" href="/logout">登出</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin">後台管理</a>
+      </li>
+      {% else %}
+      <li class="nav-item {% if LOGI %}active{% endif %}">
+        <a class="nav-link" href="/login">登入</a>
+      </li>
+      <li class="nav-item {% if CONT %}active{% endif %}">
+        <a class="nav-link" href="/contact">聯絡管理員</a>
+      </li>
+      {% endif %}
+
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,39 @@
+<!-- listing.html -->
+{% extends "base.html" %}
+{% block title %}我沒話好說{% endblock %}
+{% block content %}
+<div class='container'>
+	<div class='row'>
+		<div class='col-md-12'>
+			<div class='card'>
+				<div class='card-header' align='center'>
+					<h3>～～人之初性本善，是不是屁話～～</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% for p in posts %}
+	{% cycle "<div class='row'> <div class='col-md-6'>" "<div class='col-md-6'>"%}
+		<div class="card text-white {% cycle 'bg-primary' 'bg-secondary' 'bg-warning'%}   mb-3" style="max-width: 18rem;">
+			<div class="card-header bg-transparent">
+				<table width=100%><tr>
+					<td>『{{ p.nickname }}』Feels {{ p.mood}}</td>
+					<td align=right><i><small>{{ p.pub_time }}</small></i></td>
+				</tr></table></div>
+			<div class="card-body "><p class="card-text bg-dark">{{ p.message | linebreaks }}</p></div>
+		</div>
+	{% cycle "</div> <!-- end of col -->" "</div></div> <!-- end of row and col -->" %}
+
+	{% endfor %}
+	{% if Lp|divisibleby:2 %}
+	{% else %}
+	</div> <!-- end of row? when len(post) not divisibleby 3 -->
+	{% endif %}
+
+</div> <!-- end of container -->
+
+
+
+
+{% endblock %}

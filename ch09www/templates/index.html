@@ -1,0 +1,42 @@
+<!-- index.html -->
+
+{% extends "base.html" %}
+{% block title %}分享日記{% endblock %}
+{% block content %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class='container' align='center'>
+	{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+	{% endfor %}
+
+	<div class='row'>
+		<div class='col-xl-12'>
+			<div class='card'>
+				<h3 class='card-header'>{{ username | default:"我" }}的私人日記</h3>
+			</div>
+		</div>
+	</div>
+	<br/><br/>
+	{% for diary in Diaries %}
+	{% cycle "<div class='row'>" ""  "" %}
+		<div class='col-md-4'>
+			<div class='card'>
+				<div class='card-header text-white bg-dark'' align=center>
+					{{ diary.ddate }}
+				</div>
+				<div class='card-body'>
+					{{ diary.note| linebreaks }}
+				</div>
+				<div class='card-footer'>
+					今日花費{{ diary.budget }}元，體重{{ diary.weight }}公斤
+				</div>
+			</div> <!-- end of card -->
+		</div> <!-- end of col -->
+	{% cycle "" "" "</div> <!-- end of row --> <br/>" %}
+	{% empty %}
+		<h3> <em>登入才能顯示日記</em></h3>
+	{% endfor %}
+
+</div> <!-- end of container -->
+
+{% endblock %}
